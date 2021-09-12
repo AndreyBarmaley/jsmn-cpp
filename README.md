@@ -1,13 +1,13 @@
 # JSON C++ Wrapper
 This is a simpe C++ interface over [JSMN parser](https://github.com/zserge/jsmn)
 
-[classes.png]
+![structure](https://github.com/AndreyBarmaley/JsonWrapperCpp/blob/main/classes.png)
 
 ## How to use it
 
-### read file content `SWE::JsonContentFile jc(file);` or string content `SWE::JsonContentString jc(str);`
+read file content `SWE::JsonContentFile jc(file);` or string content `SWE::JsonContentString jc(str);`
 
-### determine type array or object
+determine type array or object
 ```
 if(jc.isObject())
 {
@@ -24,7 +24,7 @@ else
     throw std::runtime_error("not json");
 ```
 
-### parse primitives for JsonObect
+parse primitives for *JsonObect*
 ```
     std::cout << "variant 1 -" << std::endl;
     for(auto & key : jo.keys())
@@ -72,7 +72,7 @@ else
     auto val3 = jo.getInteger("key3");
 ```
 
-### parse primitives for JsonArray
+parse primitives for *JsonArray*
 ```
     std::cout << "base variant -" << std::endl;
     for(int it = 0; it < ja.size(); ++it)
