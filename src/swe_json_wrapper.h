@@ -66,7 +66,7 @@ namespace SWE
     class JsonObject;
     class JsonArray;
 
-    /// @brief base json value interace
+    /// @brief json value interace
     class JsonValue
     {
     public:
@@ -100,7 +100,7 @@ namespace SWE
         return jv >> val.first >> val.second;
     }
 
-    /// @brief base json null
+    /// @brief json null
     class JsonNull : public JsonValue
     {
     public:
