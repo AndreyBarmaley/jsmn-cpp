@@ -1,7 +1,6 @@
 var searchData=
 [
   ['join',['join',['../classSWE_1_1JsonArray.html#a9e92af23ab51e8e187ae62e940071e3f',1,'SWE::JsonArray::join()'],['../classSWE_1_1JsonObject.html#a693b44c3f9dfd23f375928d6da4feeae',1,'SWE::JsonObject::join()']]],
-  ['jsmntoken',['JsmnToken',['../classSWE_1_1JsmnToken.html#a7d4da609e6b8bd158776f80091dd480a',1,'SWE::JsmnToken']]],
   ['jsonarray',['JsonArray',['../classSWE_1_1JsonArray.html#a15d8511d860ac00715a7bc6bdd9462bc',1,'SWE::JsonArray::JsonArray()'],['../classSWE_1_1JsonArray.html#a13c8bba415162dbcef7c06893d612a47',1,'SWE::JsonArray::JsonArray(const JsonArray &amp;)'],['../classSWE_1_1JsonArray.html#a3828b529dbdebd1f47738eb53d9b3136',1,'SWE::JsonArray::JsonArray(JsonArray &amp;&amp;ja) noexcept'],['../classSWE_1_1JsonArray.html#a3e19d2c3ea68bf9017a070aa114f2f83',1,'SWE::JsonArray::JsonArray(const std::initializer_list&lt; T &gt; &amp;list)']]],
   ['jsonboolean',['JsonBoolean',['../classSWE_1_1JsonBoolean.html#a209d12b67b5612c199369dfb0ac6788a',1,'SWE::JsonBoolean']]],
   ['jsoncontainer',['JsonContainer',['../classSWE_1_1JsonContainer.html#a04f7014211f4ab26f4cabf5966d17f2e',1,'SWE::JsonContainer']]],

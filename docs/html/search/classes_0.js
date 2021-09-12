@@ -1,7 +1,6 @@
 var searchData=
 [
   ['jsmntok_5ft',['jsmntok_t',['../classjsmntok__t.html',1,'']]],
-  ['jsmntoken',['JsmnToken',['../classSWE_1_1JsmnToken.html',1,'SWE']]],
   ['jsonarray',['JsonArray',['../classSWE_1_1JsonArray.html',1,'SWE']]],
   ['jsonboolean',['JsonBoolean',['../classSWE_1_1JsonBoolean.html',1,'SWE']]],
   ['jsoncontainer',['JsonContainer',['../classSWE_1_1JsonContainer.html',1,'SWE']]],

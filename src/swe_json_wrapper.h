@@ -39,6 +39,7 @@
 /// @brief SWE namespace
 namespace SWE
 {
+    /// @private
     class JsmnToken : protected jsmntok_t
     {
     public:
@@ -58,13 +59,14 @@ namespace SWE
         const char*	typeString(void) const;
     };
 
+    /// @enum json types
     enum class JsonType { Null, Integer, Double, String, Boolean, Object, Array };
 
     class JsonContent;
     class JsonObject;
     class JsonArray;
 
-    /// @brief: base json value interace
+    /// @brief base json value interace
     class JsonValue
     {
     public:
@@ -98,7 +100,7 @@ namespace SWE
         return jv >> val.first >> val.second;
     }
 
-    /// @brief: base json null
+    /// @brief base json null
     class JsonNull : public JsonValue
     {
     public:
@@ -110,7 +112,7 @@ namespace SWE
         bool                    getBoolean(void) const override;
     };
 
-    /// @brief: json primitive interface
+    /// @brief json primitive interface
     class JsonPrimitive : public JsonValue
     {
     protected:
@@ -125,7 +127,7 @@ namespace SWE
         std::string             toString(void) const override;
     };
 
-    /// @brief: json string
+    /// @brief json string
     class JsonString : public JsonPrimitive
     {
     public:
@@ -139,7 +141,7 @@ namespace SWE
         bool                    getBoolean(void) const override;
     };
 
-    /// @brief: json double
+    /// @brief json double
     class JsonDouble : public JsonPrimitive
     {
     public:
@@ -152,7 +154,7 @@ namespace SWE
         bool                    getBoolean(void) const override;
     };
 
-    /// @brief: json integer
+    /// @brief json integer
     class JsonInteger : public JsonPrimitive
     {
     public:
@@ -165,7 +167,7 @@ namespace SWE
         bool                    getBoolean(void) const override;
     };
 
-    /// @brief: json integer
+    /// @brief json integer
     class JsonBoolean : public JsonPrimitive
     {
     public:
@@ -178,7 +180,7 @@ namespace SWE
         bool                    getBoolean(void) const override;
     };
 
-    /// @brief: json container interface
+    /// @brief json container interface
     class JsonContainer : public JsonValue
     {
     public:
@@ -189,7 +191,7 @@ namespace SWE
         virtual void		clear(void) = 0;
     };
 
-    /// @brief: JsonValue pointer
+    /// @brief JsonValue pointer
     struct JsonValuePtr : std::unique_ptr<JsonValue>
     {
         JsonValuePtr();

@@ -1,11 +1,11 @@
 <map id="SWE::JsonValue" name="SWE::JsonValue">
-<area shape="rect" id="node2" href="$classSWE_1_1JsonContainer.html" title=": json container interface " alt="" coords="145,351,294,472"/>
-<area shape="rect" id="node5" href="$classSWE_1_1JsonNull.html" title=": base json null " alt="" coords="320,336,441,487"/>
-<area shape="rect" id="node6" href="$classSWE_1_1JsonPrimitive.html" title=": json primitive interface " alt="" coords="465,343,611,479"/>
+<area shape="rect" id="node2" href="$classSWE_1_1JsonContainer.html" title="json container interface " alt="" coords="145,351,294,472"/>
+<area shape="rect" id="node5" href="$classSWE_1_1JsonNull.html" title="base json null " alt="" coords="320,336,441,487"/>
+<area shape="rect" id="node6" href="$classSWE_1_1JsonPrimitive.html" title="json primitive interface " alt="" coords="465,343,611,479"/>
 <area shape="rect" id="node3" href="$classSWE_1_1JsonArray.html" title="json array " alt="" coords="5,593,129,1096"/>
 <area shape="rect" id="node4" href="$classSWE_1_1JsonObject.html" title="json object " alt="" coords="154,535,285,1155"/>
-<area shape="rect" id="node7" href="$classSWE_1_1JsonBoolean.html" title=": json integer " alt="" coords="309,769,447,920"/>
-<area shape="rect" id="node8" href="$classSWE_1_1JsonDouble.html" title=": json double " alt="" coords="472,769,604,920"/>
-<area shape="rect" id="node9" href="$classSWE_1_1JsonInteger.html" title=": json integer " alt="" coords="628,769,760,920"/>
-<area shape="rect" id="node10" href="$classSWE_1_1JsonString.html" title=": json string " alt="" coords="784,762,908,927"/>
+<area shape="rect" id="node7" href="$classSWE_1_1JsonBoolean.html" title="json integer " alt="" coords="309,769,447,920"/>
+<area shape="rect" id="node8" href="$classSWE_1_1JsonDouble.html" title="json double " alt="" coords="472,769,604,920"/>
+<area shape="rect" id="node9" href="$classSWE_1_1JsonInteger.html" title="json integer " alt="" coords="628,769,760,920"/>
+<area shape="rect" id="node10" href="$classSWE_1_1JsonString.html" title="json string " alt="" coords="784,762,908,927"/>
 </map>
