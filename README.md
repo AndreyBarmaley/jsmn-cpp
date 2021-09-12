@@ -104,3 +104,5 @@ for(auto & val : ja.toStdList<std::string>())
     std::cout << val ", ";
 std::cout << std::endl;
 ```
+
+![API Documentation](https://andreybarmaley.github.io/JsonWrapperCpp/html/annotated.html)
