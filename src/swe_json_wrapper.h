@@ -1,8 +1,8 @@
 /***************************************************************************
- *   Copyright (C) 2017 by SWE team <sdl.window.engine@gmail.com>          *
+ *   Copyright (C) 2021 by AndreyBarmaley <public.irkutsk@gmail.com>       *
  *                                                                         *
- *   Part of the SWE: SDL Window Engine:                                   *
- *   https://github.com/AndreyBarmaley/sdl-window-engine                   *
+ *   Part of the jsmn-cpp:                                                 *
+ *   https://github.com/AndreyBarmaley/jsmn-cpp                            *
  *                                                                         *
  *   This program is free software; you can redistribute it and/or modify  *
  *   it under the terms of the GNU General Public License as published by  *
