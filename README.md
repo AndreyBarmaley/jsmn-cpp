@@ -103,6 +103,12 @@ std::cout << "convert to string list" << std::endl;
 for(auto & val : ja.toStdList<std::string>())
     std::cout << val ", ";
 std::cout << std::endl;
+
+// stream variant
+double val1;
+std::string val2;
+int val3;
+ja >> val1 >> val2 >> val3;
 ```
 
 API Documentation:
