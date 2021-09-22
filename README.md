@@ -106,4 +106,4 @@ std::cout << std::endl;
 ```
 
 API Documentation:
-https://andreybarmaley.github.io/JsonWrapperCpp/html/annotated.html
+https://andreybarmaley.github.io/jsmn-cpp/html/annotated.html
