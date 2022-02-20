@@ -24,7 +24,7 @@ else
     throw std::runtime_error("not json");
 ```
 
-parse primitives for *JsonObect*
+parse primitives for ![JsonObect](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonObject.html)  
 ```
 std::cout << "variant 1 -" << std::endl;
 for(auto & key : jo.keys())
@@ -72,7 +72,7 @@ auto val2 = jo.getInteger("key2", 123);
 auto val3 = jo.getInteger("key3");
 ```
 
-parse primitives for *JsonArray*
+parse primitives for ![JsonArray](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonArray.html)  
 ```
 std::cout << "base variant -" << std::endl;
 for(int it = 0; it < ja.size(); ++it)
