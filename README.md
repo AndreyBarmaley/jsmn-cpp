@@ -5,7 +5,15 @@ This is a simpe C++ interface over [JSMN parser](https://github.com/zserge/jsmn)
 
 ## How to use it
 
-read file content `SWE::JsonContentFile jc(file);` or string content `SWE::JsonContentString jc(str);`
+read file content ![JsonContentFile](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonContentFile.html)  
+```
+SWE::JsonContentFile jc(file);
+```  
+
+or string content ![JsonContentString](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonContentString.html)  
+```
+SWE::JsonContentString jc(str);
+```
 
 determine type array or object
 ```
