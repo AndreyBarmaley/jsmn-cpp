@@ -81,7 +81,7 @@ auto val3 = jo.getInteger("key3");
 ```
 
 parse primitives for ![JsonArray](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonArray.html)  
-```
+```cpp
 std::cout << "base variant -" << std::endl;
 for(int it = 0; it < ja.size(); ++it)
 {
