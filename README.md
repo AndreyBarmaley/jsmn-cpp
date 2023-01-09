@@ -6,17 +6,17 @@ This is a simpe C++ interface over [JSMN parser](https://github.com/zserge/jsmn)
 ## How to use it
 
 read file content ![JsonContentFile](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonContentFile.html)  
-```
+```cpp
 SWE::JsonContentFile jc(file);
 ```  
 
 or string content ![JsonContentString](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonContentString.html)  
-```
+```cpp
 SWE::JsonContentString jc(str);
 ```
 
 determine type array or object
-```
+```cpp
 if(jc.isObject())
 {
     // JsonObject type
@@ -33,7 +33,7 @@ else
 ```
 
 parse primitives for ![JsonObect](https://andreybarmaley.github.io/jsmn-cpp/html/classSWE_1_1JsonObject.html)  
-```
+```cpp
 std::cout << "variant 1 -" << std::endl;
 for(auto & key : jo.keys())
 {
