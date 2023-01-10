@@ -1,5 +1,6 @@
 <map id="SWE::JsonContent" name="SWE::JsonContent">
-<area shape="rect" id="node3" href="$classSWE_1_1JsonContentFile.html" title="json content file " alt="" coords="5,417,165,495"/>
-<area shape="rect" id="node4" href="$classSWE_1_1JsonContentString.html" title="json content string " alt="" coords="190,417,365,495"/>
-<area shape="rect" id="node2" title="STL class. " alt="" coords="85,5,278,83"/>
+<area shape="rect" id="node1" title="json content base class" alt="" coords="100,131,263,413"/>
+<area shape="rect" id="node3" href="$classSWE_1_1JsonContentFile.html" title="json content file" alt="" coords="5,461,165,539"/>
+<area shape="rect" id="node4" href="$classSWE_1_1JsonContentString.html" title="json content string" alt="" coords="190,461,365,539"/>
+<area shape="rect" id="node2" title="STL class." alt="" coords="86,5,277,83"/>
 </map>

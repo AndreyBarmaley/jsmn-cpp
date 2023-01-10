@@ -1,4 +1,5 @@
 <map id="SWE::JsonObject" name="SWE::JsonObject">
-<area shape="rect" id="node2" href="$classSWE_1_1JsonContainer.html" title="json container interface " alt="" coords="5,336,155,457"/>
-<area shape="rect" id="node3" href="$classSWE_1_1JsonValue.html" title="json value interace " alt="" coords="19,5,141,288"/>
+<area shape="rect" id="node1" title="json object" alt="" coords="5,520,183,1199"/>
+<area shape="rect" id="node2" href="$classSWE_1_1JsonContainer.html" title="json container interface" alt="" coords="19,351,169,472"/>
+<area shape="rect" id="node3" href="$classSWE_1_1JsonValue.html" title="json value interace" alt="" coords="33,5,155,303"/>
 </map>

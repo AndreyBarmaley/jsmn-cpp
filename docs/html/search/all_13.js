@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['_7ejsonvalue',['~JsonValue',['../classSWE_1_1JsonValue.html#a9e3a8074a96c47edbf666a2925a75584',1,'SWE::JsonValue']]]
+  ['value_94',['value',['../classSWE_1_1JsonPrimitive.html#a50e4f44f7796f71b36f83798cc0740ae',1,'SWE::JsonPrimitive']]]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['null',['Null',['../namespaceSWE.html#a99ed7e4e7724834a9c8ca92fc05362a2abbb93ef26e3c101ff11cdd21cab08a94',1,'SWE']]]
+  ['lower_65',['lower',['../namespaceSWE.html#a197757da7dc64d0370cd40852482be37',1,'SWE']]]
 ];

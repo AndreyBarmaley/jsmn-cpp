@@ -1,4 +1,5 @@
 <map id="SWE::JsonString" name="SWE::JsonString">
-<area shape="rect" id="node2" href="$classSWE_1_1JsonPrimitive.html" title="json primitive interface " alt="" coords="5,336,151,472"/>
-<area shape="rect" id="node3" href="$classSWE_1_1JsonValue.html" title="json value interace " alt="" coords="17,5,139,288"/>
+<area shape="rect" id="node1" title="json string" alt="" coords="16,535,140,700"/>
+<area shape="rect" id="node2" href="$classSWE_1_1JsonPrimitive.html" title="json primitive interface" alt="" coords="5,351,151,487"/>
+<area shape="rect" id="node3" href="$classSWE_1_1JsonValue.html" title="json value interace" alt="" coords="17,5,139,303"/>
 </map>

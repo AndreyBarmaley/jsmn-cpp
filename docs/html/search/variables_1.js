@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['value',['value',['../classSWE_1_1JsonPrimitive.html#a50e4f44f7796f71b36f83798cc0740ae',1,'SWE::JsonPrimitive']]]
+  ['os_200',['os',['../classSWE_1_1JsonStream.html#af11016d29543c88cf66ddff8f402da59',1,'SWE::JsonStream']]]
 ];
