@@ -28,27 +28,34 @@
 #include <list>
 #include <vector>
 #include <memory>
+#include <iomanip>
 #include <utility>
+#include <stdexcept>
 #include <typeindex>
 #include <filesystem>
 #include <unordered_map>
 
 #include "jsmn/jsmn.h"
 
-#define JSON_WRAPPER_VERSION 20221002
+#define JSON_WRAPPER_VERSION 20251007
 
 /// @brief SWE namespace
 namespace SWE
 {
+    struct json_error : public std::runtime_error
+    {
+        explicit json_error(const std::string & sv) : std::runtime_error(sv) {}
+    };
+
     /// @private
     class JsmnToken : protected jsmntok_t
     {
     public:
         JsmnToken();
 
-        int		counts(void) const;
-        int		start(void) const;
-        int		size(void) const;
+        const int &	counts(void) const;
+        const int &	start(void) const;
+        const int &	end(void) const;
 
         bool		isKey(void) const;
         bool		isValue(void) const;
@@ -124,9 +131,8 @@ namespace SWE
         std::any                value;
 
     public:
-        explicit JsonPrimitive(const bool & v) : value(v) {}
-        explicit JsonPrimitive(const int & v) : value(v) {}
-        explicit JsonPrimitive(const double & v) : value(v) {}
+        template<typename T>
+        explicit JsonPrimitive(const T & v) : value(v) {}
         explicit JsonPrimitive(std::string_view v) : value(std::make_any<std::string>(v)) {}
 
         std::string             toString(void) const override;
@@ -200,20 +206,25 @@ namespace SWE
     struct JsonValuePtr : std::unique_ptr<JsonValue>
     {
         JsonValuePtr();
+        ~JsonValuePtr() = default;
+
         explicit JsonValuePtr(int);
         explicit JsonValuePtr(bool);
         explicit JsonValuePtr(double);
         explicit JsonValuePtr(std::string_view);
-        explicit JsonValuePtr(const JsonArray &);
-        explicit JsonValuePtr(const JsonObject &);
-        explicit JsonValuePtr(JsonArray &&);
-        explicit JsonValuePtr(JsonObject &&);
+
         explicit JsonValuePtr(JsonValue*);
+
         JsonValuePtr(const JsonValuePtr &);
         JsonValuePtr(JsonValuePtr &&) noexcept;
 
-        JsonValuePtr &          operator=(const JsonValuePtr &);
-        JsonValuePtr &          operator=(JsonValuePtr &&) noexcept;
+        explicit JsonValuePtr(const JsonArray &);
+        explicit JsonValuePtr(const JsonObject &);
+        explicit JsonValuePtr(JsonArray &&) noexcept;
+        explicit JsonValuePtr(JsonObject &&) noexcept;
+
+        JsonValuePtr & operator=(const JsonValuePtr &);
+        JsonValuePtr & operator=(JsonValuePtr &&) noexcept;
 
         void			assign(const JsonValuePtr &);
     };
@@ -233,6 +244,8 @@ namespace SWE
 
     public:
         JsonArray() = default;
+        ~JsonArray() = default;
+
         JsonArray(const JsonArray &);
         JsonArray(JsonArray && ja) noexcept;
 
@@ -288,7 +301,7 @@ namespace SWE
         void                    addObject(JsonObject &&);
 
         void                    join(const JsonArray &);
-        void                    swap(JsonArray &) noexcept;
+        void                    swap(JsonArray &&) noexcept;
 
         template<typename T>
         std::vector<T> toStdVector(void) const
@@ -296,7 +309,7 @@ namespace SWE
             std::vector<T> res;
             res.reserve(content.size());
 
-            for(auto & ptr : content)
+            for(const auto & ptr : content)
                 res.emplace_back(ptr->template get<T>());
 
             return res;
@@ -307,7 +320,7 @@ namespace SWE
         {
             std::list<T> res;
 
-            for(auto & ptr : content)
+            for(const auto & ptr : content)
             {
                 res.push_back(T());
 
@@ -321,7 +334,7 @@ namespace SWE
         template<typename T>
         const JsonArray & operator>> (std::vector<T> & v) const
         {
-            for(auto & ptr : content)
+            for(const auto & ptr : content)
                 v.emplace_back(ptr->template get<T>());
 
             return *this;
@@ -330,7 +343,7 @@ namespace SWE
         template<typename T>
         const JsonArray & operator>> (std::list<T> & v) const
         {
-            for(auto & ptr : content)
+            for(const auto & ptr : content)
                 v.emplace_back(ptr->template get<T>());
 
             return *this;
@@ -371,6 +384,8 @@ namespace SWE
 
     public:
         JsonObject() = default;
+        ~JsonObject() = default;
+
         JsonObject(const JsonObject &);
         JsonObject(JsonObject && jo) noexcept;
 
@@ -415,14 +430,14 @@ namespace SWE
         void			addArray(const std::string &, JsonArray &&);
         void			addObject(const std::string &, JsonObject &&);
         void                    join(const JsonObject &);
-        void                    swap(JsonObject &) noexcept;
+        void                    swap(JsonObject &&) noexcept;
 
         template<typename T>
         std::map<std::string, T> toStdMap(void) const
         {
             std::map<std::string, T> res;
 
-            for(auto & [key, ptr] : content)
+            for(const auto & [key, ptr] : content)
                 res.emplace(key, ptr->template get<T>());
 
             return res;
@@ -433,7 +448,7 @@ namespace SWE
         {
             std::unordered_map<std::string, T> res;
 
-            for(auto & [key, ptr] : content)
+            for(const auto & [key, ptr] : content)
                 res.emplace(key, ptr->template get<T>());
 
             return res;
@@ -460,13 +475,16 @@ namespace SWE
         std::string		content;
 
     protected:
-        std::string		stringToken(const JsmnToken &) const;
+        std::string_view	stringToken(const JsmnToken &) const;
         jsmntok_t*		toJsmnTok(void);
 
-        std::pair<JsonValuePtr, int> getValueArray(const const_iterator &, JsonContainer* cont) const;
-        std::pair<JsonValuePtr, int> getValueObject(const const_iterator &, JsonContainer* cont) const;
-        std::pair<JsonValuePtr, int> getValuePrimitive(const const_iterator &, JsonContainer* cont) const;
-        std::pair<JsonValuePtr, int> getValue(const const_iterator &, JsonContainer* cont) const;
+        int pushValuesToArray(const const_iterator &, JsonArray &) const;
+        int pushValuesToObject(const const_iterator &, JsonObject &) const;
+
+        std::pair<JsonValuePtr, int> getValueArray(const const_iterator &) const;
+        std::pair<JsonValuePtr, int> getValueObject(const const_iterator &) const;
+        std::pair<JsonValuePtr, int> getValuePrimitive(const const_iterator &) const;
+        std::pair<JsonValuePtr, int> getValueFromIter(const const_iterator &) const;
 
     public:
         JsonContent() = default;
@@ -523,15 +541,28 @@ namespace SWE
     public:
         JsonObjectStream();
 
-        JsonObjectStream & push(std::string_view, const json_plain &);
-        JsonObjectStream & push(std::string_view, const std::string &);
-        JsonObjectStream & push(std::string_view, const std::string_view &);
-        JsonObjectStream & push(std::string_view, const char*);
-        JsonObjectStream & push(std::string_view, int);
-        JsonObjectStream & push(std::string_view, size_t);
-        JsonObjectStream & push(std::string_view, double);
-        JsonObjectStream & push(std::string_view, bool);
         JsonObjectStream & push(std::string_view);
+
+        template<typename T>
+        JsonObjectStream & push(std::string_view key, const T & val)
+        {
+            if(comma) { os << ","; }
+
+            if constexpr (std::is_pointer_v<T> && sizeof(std::remove_pointer_t<T>) == 1) {
+                os << std::quoted(key) << ":" << std::quoted(val ? val : "");
+            } else if constexpr (std::is_same_v<T, bool>) {
+                os << std::quoted(key) << ":" << (val ? "true" : "false");
+            } else if constexpr (std::is_same_v<T, std::string> || std::is_same_v<T, std::string_view>) {
+                os << std::quoted(key) << ":" << std::quoted( val );
+            } else if constexpr (std::is_integral_v<T> && sizeof(T) == 1) {
+                os << std::quoted(key) << ":" << static_cast<int>( val );
+            } else {
+                os << std::quoted(key) << ":" << val;
+            }
+
+            comma = true;
+            return *this;
+        }
 
         json_plain flush(void) override;
     };
@@ -549,15 +580,27 @@ namespace SWE
                 push(*it1++);
         }
 
-        JsonArrayStream & push(const json_plain &);
-        JsonArrayStream & push(const std::string &);
-        JsonArrayStream & push(const std::string_view &);
-        JsonArrayStream & push(const char*);
-        JsonArrayStream & push(int);
-        JsonArrayStream & push(size_t);
-        JsonArrayStream & push(double);
-        JsonArrayStream & push(bool);
         JsonArrayStream & push(void);
+
+        template<typename T>
+        JsonArrayStream & push(const T & val)
+        {
+            if(comma) { os << ","; }
+
+            if constexpr (std::is_pointer_v<T> && sizeof(std::remove_pointer_t<T>) == 1) {
+                os << std::quoted(val ? val : "");
+            } else if constexpr (std::is_same_v<T, bool>) {
+                os << (val ? "true" : "false");
+            } else if constexpr (std::is_same_v<T, std::string> || std::is_same_v<T, std::string_view>) {
+                os << std::quoted( val );
+            } else if constexpr (std::is_integral_v<T> && sizeof(T) == 1) {
+                os << static_cast<int>( val );
+            } else {
+                os << val;
+            }
+            comma = true;
+            return *this;
+        }
 
         json_plain flush(void) override;
     };
